@@ -14,7 +14,7 @@ module Statsig
       begin
         res = task.call
       rescue StandardError, SystemStackError => e
-        if e.is_a?(Statsig::UninitializedError) || e.is_a?(Statsig::ValueError)
+        if e.is_a?(Statsig::UninitializedError) || e.is_a?(Statsig::ValueError) || e.is_a?(Statsig::NetworkError)
           raise e
         end
 
